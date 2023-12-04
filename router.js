@@ -2,6 +2,8 @@ const express = require("express");
 const router = express();
 const db = require("./database/db");
 const passport = require("passport");
+const fs = require('fs');
+const path = require('path');
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const PassportLocal = require("passport-local").Strategy;
@@ -96,6 +98,12 @@ router.get("/getpaginas", (req, res) => {
   });
 });
 
+router.get('/get-css', (req, res) => {
+  // Lee el contenido del archivo CSS (style.css)
+  const fs = require('fs');
+  const cssContent = fs.readFileSync('./public/css/estilos.css', 'utf8');
+  res.send(cssContent);
+});
 
 router.post('/actualizar_pagina', (req, res) => {  
   const datosRecibidos = req.body;   
@@ -104,9 +112,23 @@ router.post('/actualizar_pagina', (req, res) => {
     .then((result) => {    
       // console.log(result);
       console.log('Datos subidos correctamente');
-    })    
-  
+    })      
   res.json({ mensaje: 'Datos recibidos correctamente' });
+});
+
+router.post('/actualizar_css', (req, res) => {  
+  const datosRecibidos = req.body;  
+  
+  console.log(datosRecibidos);
+  // try {
+  //   const filePath = path.join(__dirname, 'public', 'css', 'style.css');
+  //   fs.writeFileSync(filePath, datosRecibidos, 'utf8');
+  // } catch (error) {
+  //   console.log(error);
+  // }
+  
+
+  // res.json({ mensaje: 'Datos recibidos correctamente' });
 });
 
 router.get("/login", (req, res) => {

@@ -41,11 +41,19 @@
 
         <div class="container">
           <p>Selector de sitio Web</p>
-          <select id="select_page">
-            <% list.forEach(function(item) { %>
-              <option value="<%= item %>"><%= item %></option>
-            <% }); %>
-          </select>
+          <div class="d-flex">
+            <select id="select_page">
+              <% list.forEach(function(item) { %>
+                <option value="<%= item %>"><%= item %></option>
+              <% }); %>
+            </select>
+            <select id="select_language">
+              <option value>--</option>
+              <option value="html">HTML</option>
+              <option value="css">CSS</option>
+              <option value="js">JS</option>
+            </select>
+          </div>          
         </div>   
         <div id="editor" class="edit"></div>
       </div>
