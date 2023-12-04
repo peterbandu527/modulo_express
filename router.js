@@ -96,6 +96,19 @@ router.get("/getpaginas", (req, res) => {
   });
 });
 
+
+router.post('/actualizar_pagina', (req, res) => {  
+  const datosRecibidos = req.body;   
+  const tabla = 'paginas';
+  db.actualizar_pagina(tabla, datosRecibidos)
+    .then((result) => {    
+      // console.log(result);
+      console.log('Datos subidos correctamente');
+    })    
+  
+  res.json({ mensaje: 'Datos recibidos correctamente' });
+});
+
 router.get("/login", (req, res) => {
   res.render("login", { page: "Login" });
 });

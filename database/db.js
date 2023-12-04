@@ -100,8 +100,15 @@ function cantidad_pagina(tabla){
     });    
   });  
 }
-
-// module.exports = client;
+function actualizar_pagina(tabla, data) {     
+  return new Promise((resolve, reject) => {
+    const query = `UPDATE ${tabla} SET contenido = '${data.contenido}' WHERE url = '${data.url}'`;
+    // const values = [data.contenido, data.url];
+    client.query(query, (error, result) => {      
+      return error ? reject(error) : resolve(result);
+    });
+  });
+}
 
 module.exports = {
   todos,
@@ -112,4 +119,5 @@ module.exports = {
   agregar_auth,
   pagina,
   cantidad_pagina,
+  actualizar_pagina,
 }; 
