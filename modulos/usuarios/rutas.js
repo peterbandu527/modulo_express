@@ -39,7 +39,7 @@ async function eliminar (req,res,next){
 async function agregar (req,res,next){
     try{        
         const items = await controlador.agregar(req.body);
-        if(req.body.id_user == 0){
+        if(req.body.id == 0){
             mensaje = 'Item guardado con exito';
         }else{
             mensaje = 'Item actualizado con exito';

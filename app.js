@@ -1,5 +1,4 @@
 const express = require('express');
-const db = require('./database/db'); // Importa la conexión a la base de datos
 const morgan = require('morgan');
 const app = express();
 const usuarios = require('./modulos/usuarios/rutas');

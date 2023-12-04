@@ -1,0 +1,59 @@
+<%- include('header_back'); -%>
+<body class="d-flex flex-column h-100">
+  <header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand titulo" href="#">EDitor Web</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Editor</a>
+            </li>
+           
+          </ul>          
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="flex-shrink-0">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-6 col-md-6">  
+          <div class="d-flex" style="margin-top:10%">
+            <button id="btnReset" class="btn btn-default me-3">
+              <i class="fa-solid fa-rotate-right mr-2"></i> Reset
+            </button>
+            <button id="btnRun" class="btn btn-primary me-3">
+              <i class="fa-solid fa-play mr-2"></i> Run
+            </button>
+            <div class="d-flex btn btn-success">
+              <input type="checkbox" id="btnLive" class="mr-1"/>
+              <i class="fa-solid fa-clock-rotate-left mr-2"></i>
+              <span class="uppercase">Live</span>
+            </div>
+          </div>    
+          <div class="container">
+            <p>Selector de sitio Web</p>
+            <select id="select_page">
+              <% list.forEach(function(item) { %>
+                <option value="<%= item %>"><%= item %></option>
+              <% }); %>
+            </select>
+          </div>   
+          <div id="editor" class="edit"></div>
+        </div>
+        <div class="col-lg-6 col-md-6 mt-5">
+          <iframe class="edit" id="output"></iframe>
+        </div>
+      </div>
+    </div>
+   
+  </main>
+  <%- include('footer_back'); -%>
+</body>
+
+</html>
