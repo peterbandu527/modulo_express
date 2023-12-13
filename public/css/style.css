@@ -4,16 +4,7 @@
 
 .navbar{
     background-color: #0C7FCF!important;
-}
-/*#estudios{*/
-/*    color: red;*/
-/*    background: grey;*/
-/*}*/
-.servicio{
-    color: #000;
-    background: #dedede;
-    padding: 1%;
-    border-radius: 15px;
+    color:#fff;
 }
 .nav-link{
     color: #fff!important;

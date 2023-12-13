@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Admin Dashboard</title>
+    <title><%= page %></title>
     <link rel="icon" type="image/svg+xml" href="/images/favicon.ico">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -12,5 +12,29 @@
       crossorigin="anonymous"
     />
     <link href="/css/estyle_back.css" rel="stylesheet"/> 
-    
+    <script src="/js/vendor/ace-builds/src/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/vendor/ace-builds/src/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>  
+
   </head>
+  <header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand titulo" href="/dashboard">EDitor Web</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#" id="btn_editor">Editor Html/Css/Js</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/subida" id="btn_editor">Medios Multimedia</a>
+            </li>           
+          </ul>          
+        </div>
+      </div>
+    </nav>
+  </header>
+  <body>

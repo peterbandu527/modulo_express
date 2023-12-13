@@ -63,6 +63,28 @@ select_language.addEventListener("change", function () {
         console.error("Error al obtener el contenido del archivo CSS:", error)
       );
   }
+  if (selected == "js") {
+    editor.setValue("");
+    editor.setOptions({
+      fontsize: "16px",
+      showLineNumbers: true,
+      vScrollBarAlwaysVisible: true,
+      enableBasicAutocompletion: true,
+      enableSnippets: true,
+      enableLiveAutocompletion: true,
+    });
+    selector_page.style.display = "none";
+    editor.session.setMode("ace/mode/javascript");
+
+    fetch("/get-js")
+      .then((response) => response.text())
+      .then((jsContent) => {
+        editor.setValue(jsContent); 
+      })
+      .catch((error) =>
+        console.error("Error al obtener el contenido del archivo CSS:", error)
+      );
+  }
 });
 
 fetch("/getpaginas")
@@ -125,17 +147,30 @@ btnSave.addEventListener("click", function () {
     fetch("/actualizar_css", {
       method: "POST",      
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "text/plain",
       },
-      body: JSON.stringify(editedCSS),
+      body: editedCSS,
     })
-      .then((response) => response.json())
-      .then((usuario) => {
-        console.log("¡Ok!");
-      })
-      .catch((error) => {
-        console.log("Error: " + error);
-      });
+      .then((response) => response.text())
+      .then(body => {
+        console.log(body);
+      });      
+
+    iframe.src = iframe.src;
+  }
+  if (selected == "js") {
+    let editedJS = editor.getValue();
+    fetch("/actualizar_js", {
+      method: "POST",      
+      headers: {
+        "Content-Type": "text/plain",
+      },
+      body: editedJS,
+    })
+      .then((response) => response.text())
+      .then(body => {
+        console.log(body);
+      });      
 
     iframe.src = iframe.src;
   }

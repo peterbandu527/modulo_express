@@ -100,6 +100,14 @@ function cantidad_pagina(tabla){
     });    
   });  
 }
+function all_medios(tabla){    
+  return new Promise((resolve, reject)=>{
+    client.query(`SELECT * From ${tabla} `,(error,result)=>{
+      return error ? reject(error) : resolve(result);
+    });    
+  });  
+}
+
 function actualizar_pagina(tabla, data) {     
   return new Promise((resolve, reject) => {
     const query = `UPDATE ${tabla} SET contenido = '${data.contenido}' WHERE url = '${data.url}'`;
@@ -110,6 +118,16 @@ function actualizar_pagina(tabla, data) {
   });
 }
 
+function agregar_img64(tabla,base64,name,type){  
+  return new Promise((resolve, reject)=>{
+    const query = `INSERT INTO ${tabla} (name,type,base64) VALUES ($1, $2, $3)`;    
+    const values = [name,type,base64];
+    client.query(query,values, (error,result)=>{ 
+      return error ? reject(error) : resolve(result);
+    });
+    
+  });  
+}
 module.exports = {
   todos,
   uno,
@@ -120,4 +138,6 @@ module.exports = {
   pagina,
   cantidad_pagina,
   actualizar_pagina,
+  agregar_img64,
+  all_medios,
 }; 

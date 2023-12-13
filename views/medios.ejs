@@ -1,0 +1,17 @@
+<%- include('header_back'); -%>
+  <main class="flex-shrink-0 d-flex flex-column">
+    <div class="container-fluid" style="margin-top: 5%;">
+      <h3>Subida de archivo</h3>
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Cargar">
+      </form>
+    </div>
+    <div class="container-fluid mt-5">
+      <div class="row" id="columns_data"> 
+               
+      </div>
+    </div>
+  </main>
+  <script src="/js/subida.js" type="text/javascript" charset="utf-8"></script>
+  <%- include('footer_back'); -%>
